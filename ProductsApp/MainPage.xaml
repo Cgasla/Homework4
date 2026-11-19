@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:ProductsApp.Models"
+             x:Class="ProductsApp.MainPage"
+             Title="Товари">
+
+    <Grid RowDefinitions="Auto,Auto,*" Padding="10" RowSpacing="8">
+
+        <!-- Дві кнопки -->
+        <HorizontalStackLayout Grid.Row="0" Spacing="10">
+            <Button Text="Додати товар"
+                    Clicked="OnAddClicked" />
+            <Button Text="Видалити вибраний"
+                    BackgroundColor="DarkRed"
+                    TextColor="White"
+                    Clicked="OnDeleteClicked" />
+        </HorizontalStackLayout>
+
+        <!-- Заголовок таблиці -->
+        <Grid Grid.Row="1"
+              ColumnDefinitions="*,2*,*,*,*,2*,3*"
+              BackgroundColor="LightGray"
+              Padding="5">
+            <Label Grid.Column="0" Text="Тип"       FontAttributes="Bold" TextColor="Black" />
+            <Label Grid.Column="1" Text="Назва"     FontAttributes="Bold" TextColor="Black" />
+            <Label Grid.Column="2" Text="Ціна"      FontAttributes="Bold" TextColor="Black" />
+            <Label Grid.Column="3" Text="Країна"    FontAttributes="Bold" TextColor="Black" />
+            <Label Grid.Column="4" Text="Пакування" FontAttributes="Bold" TextColor="Black" />
+            <Label Grid.Column="5" Text="Опис"      FontAttributes="Bold" TextColor="Black" />
+            <Label Grid.Column="6" Text="Деталі"    FontAttributes="Bold" TextColor="Black" />
+        </Grid>
+
+        <!-- Таблиця з переліком товарів -->
+        <CollectionView x:Name="ProductsView"
+                        Grid.Row="2"
+                        SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Product">
+                    <Grid ColumnDefinitions="*,2*,*,*,*,2*,3*" Padding="5">
+                        <Label Grid.Column="0" Text="{Binding Category}" />
+                        <Label Grid.Column="1" Text="{Binding Name}" />
+                        <Label Grid.Column="2" Text="{Binding Price, StringFormat='{0:F2} грн'}" />
+                        <Label Grid.Column="3" Text="{Binding CountryOfOrigin}" />
+                        <Label Grid.Column="4" Text="{Binding PackingDate, StringFormat='{0:dd.MM.yyyy}'}" />
+                        <Label Grid.Column="5" Text="{Binding Description}" />
+                        <Label Grid.Column="6" Text="{Binding Details}" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>

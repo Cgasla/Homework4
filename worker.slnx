@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="ConsoleNumberApp/ConsoleNumberApp.csproj" />
+  <Project Path="GeoAbstract/GeoAbstract.csproj" />
+  <Project Path="GeoInterface/GeoInterface.csproj" />
+  <Project Path="ProductsApp/ProductsApp.csproj" />
+  <Project Path="worker.csproj" />
+</Solution>
